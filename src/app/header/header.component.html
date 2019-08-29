@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Libro de recetas</a>
+    </div>
+    <div class="navbar-default">
+      <ul class="nav navbar-nav">
+        <li *ngIf="isAuthenticated">
+          <a routerLinkActive="active" routerLink="/recipes" >Recetas</a>
+        </li>
+        <li *ngIf="!isAuthenticated">
+          <a routerLinkActive="active" routerLink="/auth" >Autenticación</a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="/shoppingList">Shopping list</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isAuthenticated">
+          <a style="cursor: pointer;" (click)="onLogOut()">Salir</a>
+        </li>
+        <li class="btn-group dropdown" appDrowpdown *ngIf="isAuthenticated">
+          <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manejo de datos <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a style="cursor: pointer;" (click)="onSaveData()">Guardar datos</a></li>
+              <li><a style="cursor: pointer;" (click)="onFetchRecipes()">Cargar datos</a></li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
